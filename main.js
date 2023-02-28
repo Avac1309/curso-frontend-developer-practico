@@ -5,6 +5,7 @@ const mobileMenu = document.querySelector(".mobile-menu");
 const aside = document.querySelector(".product-detail");
 const menuCarritoAside = document.querySelector(".navbar-shopping-cart");
 
+
 menuEmail.addEventListener("click", toggleDesktopMenu);
 menuHamIcon.addEventListener("click", toggleMobileMenu);
 menuCarritoAside.addEventListener("click", toggleCarritoAside);
@@ -54,3 +55,51 @@ function toggleCarritoAside() {
     
     aside.classList.toggle('inactive');
 }
+
+// Lista de productos: HTML a partir de arrays ----------------------------------------------------------------
+const productList = []; //estos son los productos que apareceran 
+productList.push({
+    name: "Bike",
+    price: 130,
+    image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+})
+productList.push({
+    name: "Computadora",
+    price: 500,
+    image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+})
+productList.push({
+    name: "Pantalla",
+    price: 230,
+    image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+})
+productList.push({
+    name: "Monitor",
+    price: 900,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+})
+
+function renderProducts(productList) {
+    for (product of productList) {
+
+        const htmlCards =  `<div class="product-card">
+            <img src= ${product.image} alt="">
+            <div class="product-info">
+                <div>
+                    <p>$${product.price}</p>
+                    <p>${product.name}</p>
+                </div>
+                <figure>
+                    <img src="./icons/bt_add_to_cart.svg" alt="">
+                </figure>
+            </div>
+        </div>  `
+
+        const cardsContainer = document.querySelector(".cards-container");
+        cardsContainer.innerHTML += htmlCards
+    }
+}
+
+renderProducts(productList);
+
+
